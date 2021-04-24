@@ -28,12 +28,13 @@ ActiveAdmin.register_page "Dashboard" do
     #     end
     #   end
     # end
-
+    columns do
       columns do
         panel "Info" do
-          para "Welcome to admin_feat."
+          para "Welcome to the admin page."
         end
       end
+    end
     
 
   end # content
