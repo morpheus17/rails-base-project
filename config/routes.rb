@@ -11,8 +11,7 @@ Rails.application.routes.draw do
       :sign_in => "sign_in",
       :edit => "edit_user",
       :sign_out => "logout", 
-      :sign_up => "sign_up" },
-    controllers: { confirmations: 'confirmations' }
+      :sign_up => "sign_up" }
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
   # HOME PAGE
