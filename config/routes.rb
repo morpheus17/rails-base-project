@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
+  # Active admin
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
+  
   resources :stocks
   resources :transactions
 
@@ -12,7 +14,9 @@ Rails.application.routes.draw do
       :edit => "edit_user",
       :sign_out => "logout", 
       :sign_up => "sign_up" }
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+
+  
+
 
   # HOME PAGE
   root "home#index" # Set home/index as root

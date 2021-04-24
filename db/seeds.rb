@@ -20,7 +20,6 @@ user.username = 'broker'
 user.role_id = Role.find_by(role_name: "broker").id
 user.password = '123456'
 user.password_confirmation = '123456'
-user.skip_confirmation!
 user.save!
 
 user = User.new
@@ -29,7 +28,6 @@ user.username = 'buyer'
 user.role_id = Role.find_by(role_name: "buyer").id
 user.password = '123456'
 user.password_confirmation = '123456'
-user.skip_confirmation!
 user.save!
 
 user = User.new
@@ -38,7 +36,6 @@ user.username = 'admin'
 user.role_id = Role.find_by(role_name: "admin").id
 user.password = '123456'
 user.password_confirmation = '123456'
-user.skip_confirmation!
 user.save!
 
 
