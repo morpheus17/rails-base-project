@@ -9,9 +9,10 @@ class MarketController < ApplicationController
 
     # POST
     def show_stock_in_modal
-      market = Market.find(params[:market_id])
+      # market = Market.find(params[:stock_name])
       @client = IEX::Api::Client.new()
-      @market_quote = @client.quote(market.name)
+      @market_quote = @client.quote(params[:stock_name])
+      @seller_id = params[:seller_id] ? params[:seller_id] : nil
 
       respond_to  do |format|
         format.js

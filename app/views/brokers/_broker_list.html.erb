@@ -1,0 +1,37 @@
+<% client = IEX::Api::Client.new()%>
+<% if params[:stock_name] %>
+  <% company_quote = client.quote(params[:stock_name]).latest_price%>
+<% end %>
+
+<table class="table caption-top">
+  <thead>
+    <tr>
+      <th scope="col">Company</th>
+      <th scope="col">Broker Name</th>
+      <th scope="col">Amount per Unit</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @brokers.each do |broker, index| %>
+      <% broker.stocks.each_with_index do | stock | %>
+        <tr>
+          <td><%= stock.name %></td>
+          <td><%= broker.email %></td>
+          <% if company_quote %>
+            <td><%= company_quote %></td>
+          <% else %>
+            <td><%= client.quote(stock.name).latest_price%></td>
+          <% end %>
+          <td>
+            <%= button_to "Buy", show_stock_in_modal_path, method: :post, remote: true,
+              class: "btn btn-primary",
+              "data-bs-toggle" => "modal",
+              "data-bs-target" => "#modal-create-stock",
+              params: { stock_name: stock.name, seller_id: broker.id} %>
+          </td>
+        </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>

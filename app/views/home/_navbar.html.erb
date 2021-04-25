@@ -15,6 +15,12 @@
                     <li class="nav-item">
                         <%= link_to "Market", market_path, class: "ms-3 nav-link", role:"button"%>
                     </li>
+                    <% if !(current_user.role_id == 3) %>
+                        <li class="nav-item">
+                            <%= link_to "Brokers", brokers_path, class: "ms-3 nav-link", role:"button"%>
+                        </li>
+                    <% end %>
+
                     <li class="nav-item">
                         <%= link_to "Portfolio", stocks_path, class: "ms-3  nav-link", role:"button"%>
                     </li>

@@ -10,6 +10,7 @@
       $<%= @market_quote.latest_price%><br>
       <%= @market_quote.change_percent_s%><br>
       <%= @market_quote.change%><br>
+      seller id :<%= @seller_id %><br>
     </p>
     <div class="form-group">
       <div class="text-center">
@@ -24,6 +25,9 @@
 
       <%# f.hidden_field :latest_price, value: @market_quote.latest_price  %>
       <%= hidden_field_tag :latest_price, @market_quote.latest_price %>
+      <% if current_user.role.role_name == "buyer" %>
+        <%= hidden_field_tag :seller_id, @seller_id %>
+      <% end %>
 
     </div>
   </div>

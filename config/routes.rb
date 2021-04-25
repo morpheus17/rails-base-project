@@ -27,4 +27,9 @@ Rails.application.routes.draw do
   # MARKET_STOCKS
   # Contains routes for updating stocks and transactions from the marketpage - For Brokers
   resources :market_stocks, only: [:create, :destroy]
+
+
+  # broker page
+  resources :brokers, only: [:index, :show], param: :stock_name
+  # get "broker", to: "brokers#index"
 end

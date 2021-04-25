@@ -30,6 +30,12 @@
 
       <%= yield %>
     </div>
+    <%# Modal for creating stock: Broker buying new stock from market page %>
+
+    <div class="modal fade" id="modal-create-stock" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <%= render partial: "market/modal_create_stock"%>
+    </div>
   </body>
   <%= javascript_pack_tag 'dailychartsrun.js' , 'data-turbolinks-track': 'reload' %>
 </html>
+

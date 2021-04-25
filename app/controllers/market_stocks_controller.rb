@@ -9,13 +9,6 @@ class MarketStocksController < ApplicationController
 
     if stock_presence > 0
       # if data exists already, update it
-      puts ""
-      puts "already exist"
-      puts ""
-
-      puts ""
-      puts stock_params
-      puts ""
 
       @stock = current_user.stocks.find_by(name: stock_params[:name])
       price = stock_params[:quantity].to_f * params[:latest_price].to_f
@@ -26,17 +19,13 @@ class MarketStocksController < ApplicationController
         quantity: stock_params[:quantity].to_i + @stock.quantity,
         user_id: current_user.id
       }
-      
+     
       @transaction = current_user.purchases.new({
         total_amount: price ,
         quantity: stock_params[:quantity],
         price: params[:latest_price],
-        seller_id: nil
+        seller_id: current_user.role.role_name == "buyer" ? params[:seller_id] : nil
       })
-      
-      puts ""
-      puts stock_params
-      puts ""
 
       ActiveRecord::Base.transaction do
 
@@ -52,9 +41,6 @@ class MarketStocksController < ApplicationController
 
     else
       # else create new stocks
-      puts ""
-      puts "new"
-      puts ""
   
       @stock = current_user.stocks.new(stock_params)
       @stock.amount = @stock.quantity.to_f * params[:latest_price].to_f
@@ -63,7 +49,7 @@ class MarketStocksController < ApplicationController
         total_amount: @stock.amount ,
         quantity: stock_params[:quantity],
         price: params[:latest_price],
-        seller_id: nil
+        seller_id: current_user.role.role_name == "buyer" ? params[:seller_id] : nil
       })
 
       ActiveRecord::Base.transaction do

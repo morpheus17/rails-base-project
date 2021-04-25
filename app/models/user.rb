@@ -12,4 +12,8 @@ class User < ApplicationRecord
   
   has_many :sale, class_name: "Transaction", foreign_key: "seller_id", dependent: :nullify
   has_many :purchases, class_name: "Transaction", foreign_key: "buyer_id", dependent: :nullify
+
+  scope :brokers, -> { joins(:role).merge(Role.brokers) }
+  scope :buyers, -> { joins(:role).merge(Role.buyers) }
+  scope :admin, -> { joins(:role).merge(Role.admin) }
 end

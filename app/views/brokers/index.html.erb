@@ -1,0 +1,12 @@
+<div class="container">
+  <div class="border-bottom">
+    <h1 class="text-center pt-5">Brokers</h1>
+  </div>
+  <div id ="stock-searched" class="d-flex justify-content-center row">
+    <% if @brokers %>
+      <%= render partial: "brokers/broker_list" %>
+    <% else %>
+      <p class="text-muted text-center pt-5">No brokers active in the market.</p>
+    <% end %>
+  </div>
+</div>

@@ -31,14 +31,15 @@
                             </div> %>
                         </div>
                         <div class="d-flex justify-content-end">
-                            <%# Opens a modal if buy %>
+                            <%# If broker %>
                             <% if current_user.role_id == 3 %>
                                 <%= button_to "Buy", show_stock_in_modal_path, method: :post, remote: true,
                                     class: "btn btn-primary",
                                     "data-bs-toggle" => "modal",
                                     "data-bs-target" => "#modal-create-stock",
-                                    params: { market_id: market.id } %>
+                                    params: { stock_name: market.name } %>
                             <% else %>
+                            <%# for Buyer %>
                                 <%= form_with url: add_stock_to_market_path, method: :post, remote: true do |f| %>
                                     <%= f.hidden_field :name %>
                                     <%= hidden_field_tag :name, quote.symbol  %>
