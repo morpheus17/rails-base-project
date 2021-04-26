@@ -30,6 +30,6 @@ Rails.application.routes.draw do
 
 
   # broker page
-  resources :brokers, only: [:index, :show], param: :stock_name
+  resources :brokers, only: [:index, :show]
   # get "broker", to: "brokers#index"
 end
