@@ -1,9 +1,16 @@
 class AdminMailer < Devise::Mailer
-  default from: 'from@example.com'
+  default from: 'donotreplyburner@gmail.com'
   layout 'mailer'
 
-  def new_user_waiting_for_approval(email)
-    @email = email
-    mail(to: 'proxybetazero@email.com', subject: 'New User Awaiting Admin Approval')
+  def new_user_waiting_for_approval(user)
+    @email = user.email
+    @username = user.username
+    mail(to: @email, subject: 'Stock app account pending approval')
+  end
+
+  def new_user_approved(user)
+    @email = user.email
+    @username = user.username
+    mail(to: @email, subject: 'Stock app account creation')
   end
 end

@@ -4,7 +4,7 @@ ActiveAdmin.setup do |config|
   # Set the title that is displayed on the main layout
   # for each of the active admin pages.
   #
-  config.site_title = "Rails Project"
+  config.site_title = "Stock App"
 
   # Set the link url for the title. For example, to take
   # users to your main site. Defaults to no link.
@@ -244,6 +244,24 @@ ActiveAdmin.setup do |config|
   #       menu.add label: "My Great Website", url: "http://www.mygreatwebsite.com", html_options: { target: :blank }
   #     end
   #   end
+
+  config.namespace :admin do |admin|
+    admin.build_menu do |menu|
+      menu.add label: "RootMenu", url: "/", priority: 0
+  
+      menu.add label: "Sites" do |sites|
+        sites.add label: "Google",
+                  url: "http://google.com",
+                  html_options: { target: :blank }
+  
+        sites.add label: "Facebook",
+                  url: "http://facebook.com"
+  
+        sites.add label: "Github",
+                  url: "http://github.com"
+      end
+    end
+  end
 
   # == Download Links
   #
