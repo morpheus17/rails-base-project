@@ -1,8 +1,13 @@
 Rails.application.routes.draw do
   
+  #stocks and transaction models
   resources :stocks, only: [:index, :destroy]
   resources :transactions, only: [:index]
 
+  # Active admin
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
+  
   # rename devise routes
   devise_for :users,
     :path => '', 
@@ -10,9 +15,7 @@ Rails.application.routes.draw do
       :sign_in => "sign_in",
       :edit => "edit_user",
       :sign_out => "logout", 
-      :sign_up => "sign_up" },
-    controllers: { confirmations: 'confirmations' }
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+      :sign_up => "sign_up" }
 
   # HOME PAGE
   root "home#index" # Set home/index as root
@@ -27,7 +30,6 @@ Rails.application.routes.draw do
   # MARKET_STOCKS
   # Contains routes for updating stocks and transactions from the marketpage - For Brokers
   resources :market_stocks, only: [:create, :destroy]
-
 
   # broker page
   resources :brokers, only: [:index, :show]
