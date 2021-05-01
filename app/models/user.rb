@@ -25,15 +25,16 @@ class User < ApplicationRecord
   after_create :send_admin_mail
 
   def send_admin_mail
-    if self.role_id == 3 # user is a broker
+    if Role.find_by(id: self.role_id)["role_name"] == "broker" # user is a broker
       AdminMailer.new_user_waiting_for_approval(self).deliver
-    elsif self.role_id == 2 # user is a buyer
+    elsif Role.find_by(id: self.role_id)["role_name"] == "buyer" # user is a buyer
       AdminMailer.new_user_approved(self).deliver
     end
   end
 
   def approve_buyers
-    if self.role_id == 2 
+    # if self.role_id == 2 
+    if Role.find_by(id: self.role_id)["role_name"] == "buyer"
       self.approved = true
     end
   end

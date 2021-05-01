@@ -31,6 +31,9 @@ RSpec.configure do |config|
   config.after(:each) do
     DatabaseRewinder.clean
   end
+
+  # Include the help for the request specs.
+  config.include ValidUserRequestHelper, type: :request
 end
 
 Shoulda::Matchers.configure do |config|

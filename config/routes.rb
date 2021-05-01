@@ -26,7 +26,8 @@ Rails.application.routes.draw do
   post 'show_stock_in_modal' => "market#show_stock_in_modal"
   post 'search_stock_in_market' => "market#search_stock_in_market"
   post "add_stock_to_market" => "market#add_stock_to_market"
-
+  delete "delete_stock_from_market" => "market#delete_stock_from_market"
+  
   # MARKET_STOCKS
   # Contains routes for updating stocks and transactions from the marketpage - For Brokers
   resources :market_stocks, only: [:create, :destroy]
