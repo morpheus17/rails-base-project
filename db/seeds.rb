@@ -30,13 +30,13 @@ user.password = '123456'
 user.password_confirmation = '123456'
 user.save!
 
-user = User.new
-user.email = 'admin@gmail.com'
-user.username = 'admin'
-user.role_id = Role.find_by(role_name: "admin").id
-user.password = '123456'
-user.password_confirmation = '123456'
-user.save!
+# user = User.new
+# user.email = 'admin@gmail.com'
+# user.username = 'admin'
+# user.role_id = Role.find_by(role_name: "admin").id
+# user.password = '123456'
+# user.password_confirmation = '123456'
+# user.save!
 
 
 # # # Transaction 1
