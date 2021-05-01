@@ -1,18 +1,36 @@
 ActiveAdmin.register User do
 
-  # See permitted parameters documentation:
-  # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
-  #
-  # Uncomment all parameters which should be permitted for assignment
-  #
-  # permit_params :username, :first_name, :last_name, :role_id, :email, :encrypted_password, :reset_password_token, :reset_password_sent_at, :remember_created_at, :confirmation_token, :confirmed_at, :confirmation_sent_at
-  #
-  # or
-  #
-  # permit_params do
-  #   permitted = [:username, :first_name, :last_name, :role_id, :email, :encrypted_password, :reset_password_token, :reset_password_sent_at, :remember_created_at, :confirmation_token, :confirmed_at, :confirmation_sent_at]
-  #   permitted << :other if params[:action] == 'create' && current_user.admin?
-  #   permitted
-  # end
   
+  
+  index do
+    selectable_column
+    column :id
+    column :username
+    column :first_name
+    column :last_name
+    column :role_id
+    column :email
+    column :created_at
+    column :updated_at
+    column :approved
+    column :actions do |item|
+      links = []
+      links << link_to('Show', admin_user_path(item))
+      links << link_to('Edit', edit_admin_user_path(item))
+      links << link_to('Delete', admin_user_path(item), method: :delete, confirm: 'Are you sure?')
+      links.join(' ').html_safe
+    end
+    
+  end
+
+
+  filter :id
+  filter :username
+  filter :first_name
+  filter :last_name
+  filter :role_id
+  filter :email
+  filter :created_at
+  filter :updated_at
+
 end

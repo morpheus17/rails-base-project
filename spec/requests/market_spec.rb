@@ -16,16 +16,16 @@ RSpec.describe "Markets", type: :request do
     let(:create_market) {create(:market, id: 1, name: 'MSFT', user_id: @buyer.id)}
 
     # GET index
-    it {
+    it "GET index " do
       @market = create_market
       get market_path
       
       expect(response.status).to eq(200)
       expect(response.body).to include("MSFT")
-    }
+    end
     
     # POST show_stock_in_modal
-    it {
+    it "POST show_stock_in_modal" do
       post show_stock_in_modal_path, params: {
         stock_name: "FB",
         seller_id: nil
@@ -33,20 +33,20 @@ RSpec.describe "Markets", type: :request do
 
       expect(response.status).to eq(200)
       expect(response.body).to include("FB")
-    }
+    end
 
     # POST search_stock_in_market
-    it {
+    it "POST search_stock_in_market" do
       post search_stock_in_market_path, params: {
         ticker_input: "FB",
       }, xhr: true
       
       expect(response.status).to eq(200)
       expect(response.body).to include("FB")
-    }
+    end
 
     # POST add_stock_to_market
-    it {
+    it "POST add_stock_to_market" do
       post add_stock_to_market_path, params: {
         name: "FB",
       }, xhr: true
@@ -58,10 +58,10 @@ RSpec.describe "Markets", type: :request do
       
       expect(response.status).to eq(200)
       expect(response.body).to include("FB")
-    }
+    end
 
     # DESTROY delete_stock_from_market
-    it {
+    it "DESTROY delete_stock_from_market" do
       @market = create_market
       delete delete_stock_from_market_path, params: {id: @market.id}
 
@@ -71,6 +71,6 @@ RSpec.describe "Markets", type: :request do
       get market_path
       expect(response.status).to eq(200)
       expect(response.body).not_to include("MSFT")
-    }
+    end
   end
 end

@@ -19,10 +19,13 @@ class User < ApplicationRecord
   scope :brokers, -> { joins(:role).merge(Role.brokers) }
   scope :buyers, -> { joins(:role).merge(Role.buyers) }
   scope :admin, -> { joins(:role).merge(Role.admin) }
+  scope :unapproved_users, -> { where(approved: false) }
+  scope :unapproved_users_count, -> { where(approved: false).count }
 
   # before and after creation
   before_create :approve_buyers
   after_create :send_admin_mail
+
 
   def send_admin_mail
     if Role.find_by(id: self.role_id)["role_name"] == "broker" # user is a broker
@@ -38,6 +41,11 @@ class User < ApplicationRecord
       self.approved = true
     end
   end
+
+  def approve_user
+    self.approved = true
+  end
+
   
   def active_for_authentication?
     super && approved? 

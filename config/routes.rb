@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 
   # Active admin
   devise_for :admin_users, ActiveAdmin::Devise.config
+  get '/admin/broker_approvals/:id', to: 'admin/broker_approvals#approve', as: :approve_broker
   ActiveAdmin.routes(self)
   
   # rename devise routes
