@@ -16,6 +16,8 @@ class User < ApplicationRecord
   before_create :approve_buyers
   after_create :send_admin_mail
 
+  scope :unapproved_users, -> { where(approved: false) }
+  scope :unapproved_users_count, -> { where(approved: false).count }
 
   def send_admin_mail
     if self.role_id == 3 # user is a broker
@@ -30,6 +32,11 @@ class User < ApplicationRecord
       self.approved = true
     end
   end
+
+  def approve_user
+    self.approved = true
+  end
+
   
   def active_for_authentication?
     super && approved? 

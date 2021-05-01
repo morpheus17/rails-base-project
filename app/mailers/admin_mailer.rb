@@ -13,4 +13,11 @@ class AdminMailer < Devise::Mailer
     @username = user.username
     mail(to: @email, subject: 'Stock app account creation')
   end
+
+  def broker_approved(user)
+    @email = user.email
+    @username = user.username
+    mail(to: @email, subject: 'Stock app broker account approved')
+  end
+
 end
