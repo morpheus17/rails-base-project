@@ -11,7 +11,7 @@ RSpec.describe Role, type: :model do
 
   
   context "creation" do
-    let(:buyer){ Role.create(role_name: "buyer") }
+    let(:buyer){ create :role, :buyer }
     let(:other){ Role.create(role_name: "other") }
 
     it { expect(buyer.errors).to be_empty }

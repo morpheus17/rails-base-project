@@ -18,33 +18,16 @@ RSpec.describe User, type: :model do
   end
 
   context "creation" do
+
     # Create role
-    let(:buyer_role){ Role.create(role_name: "buyer") }
-    let(:broker_role){ Role.create(role_name: "broker") }
-    let(:admin_role){ Role.create(role_name: "admin") }
+    let(:buyer_role){ create :role, :buyer }
+    let(:broker_role){ create :role, :broker }
+    let(:admin_role){ create :role, :admin }
 
-    let(:create_buyer) { User.create(
-      email: 'buyer@gmail.com',
-      username: 'buyer',
-      role_id: buyer_role.id,
-      password:'123456',
-      password_confirmation: '123456'
-    )}
+    let(:create_buyer) { create :user, :buyer, role_id: buyer_role.id}
+    let(:create_broker) { create :user, :broker, role_id: broker_role.id}
+    let(:create_admin) { create :user, :admin, role_id: admin_role.id}
 
-    let(:create_broker) { User.create(
-      email: 'broker@gmail.com',
-      username: 'broker',
-      role_id: broker_role.id,
-      password:'123456',
-      password_confirmation: '123456'
-    )}
-    let(:create_admin) { User.create(
-      email: 'admin@gmail.com',
-      username: 'admin',
-      role_id: admin_role.id,
-      password:'123456',
-      password_confirmation: '123456'
-    )}
 
     it { expect(create_buyer.errors).to be_empty }
     it { expect(create_broker.errors).to be_empty }
@@ -57,7 +40,6 @@ RSpec.describe User, type: :model do
     # it { expect(create_broker.approved).to eq false } # false
     # it { expect(create_admin.approved).to eq false } # flse
 
-    
   end
   
 end

@@ -15,33 +15,10 @@ RSpec.describe Transaction, type: :model do
   end
 
   context "creation" do
-    let(:buyer_role){ Role.create(role_name: "buyer") }
-
-    let(:buyer) { User.create(
-      email: 'buyer@gmail.com',
-      username: 'buyer',
-      role_id: buyer_role.id,
-      password:'123456',
-      password_confirmation: '123456'
-    )}
-
-    let(:stock) {
-      Stock.create(
-        name: "MSFT",
-        amount: 125.01,
-        quantity: 1,
-        user_id: buyer.id
-    )}
-
-    let(:transaction) {
-      Transaction.create(
-        total_amount: stock.amount,
-        quantity: stock.quantity,
-        price: 125.01,
-        stock_id: stock.id, 
-        seller_id: nil, 
-        buyer_id: buyer.id
-    )}
+    let(:role) { create :role, :buyer }
+    let(:buyer) { create:user, :buyer, role_id: role.id}
+    let(:stock) { create :stock, :msft, user_id: buyer.id }
+    let(:transaction) { create :transaction, :default, stock_id: stock.id, buyer_id: buyer.id}
     
     it { expect(transaction.total_amount).to be >= 0.01 }
     it { expect(transaction.quantity).to be >= 0.01 }
