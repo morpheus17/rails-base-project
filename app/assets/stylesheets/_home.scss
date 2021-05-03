@@ -7156,7 +7156,7 @@ Custom CSS
 .btn {
   font-size: .875rem;
   font-weight: 600;
-  text-transform: uppercase;
+  // text-transform: uppercase;
   transition: all .25s ease-out; }
   .btn:hover {
     -webkit-transform: translateY(-1px);
@@ -7190,7 +7190,8 @@ Custom CSS
 .navbar .navbar-nav .nav-item .nav-link {
   font-weight: 600;
   font-size: .875rem;
-  text-transform: uppercase; }
+  // text-transform: uppercase; 
+}
 
 /*signup form*/
 .signup-form .form-control {
