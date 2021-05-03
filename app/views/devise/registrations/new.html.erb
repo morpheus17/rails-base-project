@@ -1,7 +1,7 @@
 <%= render "devise/shared/error_messages", resource: resource %>
-<div class="container">
-  <div class='d-flex flex-column justify-content-between align-items-center mb-4'>
-    <div class='col-md-8 col-11 mt-4 mb-5'>
+<%# <div class="container"> %>
+  <div class='sign-container d-flex flex-column justify-content-between align-items-center mb-4 bg-dark'>
+    <div class='col-md-3 col-11 mt-7 mb-9'>
       <div class='card' id='login'>
         <div class="card-body shadow-lg rounded px-5 py-5">
           <%# <p class='mb-3 text-muted'>Welcome!</p> %>
@@ -50,7 +50,7 @@
 
             <div class="actions d-flex justify-content-between">
               <%# f.submit "Sign up as Buyer", class: 'btn btn-success mb-4 shadow rounded mt-3' %>
-              <%= f.button "Sign up", class: 'btn btn-primary mb-4 shadow rounded mt-3', data: {disable_with: "<span class='spinner-border spinner-border-sm' role='status' aria-hidden='true'></span> Signing up..."}  %>
+              <%= f.button "Sign up", class: 'btn btn-primary mb-4 shadow rounded mt-3 form-control', data: {disable_with: "<span class='spinner-border spinner-border-sm' role='status' aria-hidden='true'></span> Signing up..."}  %>
             </div>
           <% end %>
           
@@ -60,4 +60,4 @@
       </div>
     </div>
   </div>
-</div>
+<%# </div> %>

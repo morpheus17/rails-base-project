@@ -1,7 +1,8 @@
+
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Stock App</title>
+    <title>Investify</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -17,18 +18,21 @@
       integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay"
       crossorigin="anonymous"
     />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css">
     <%# <script src='https://unpkg.com/dailychart/dist/dailychart.min.js'></script> %>
   </head>
-  <body class="position-relative">
+  <body data-spy="scroll" data-target="#lambda-navbar" data-offset="0">
     <div class="loader hidden">
       <%# <img src="spinner-bean.gif" alt="Loading..." /> %>
       <%# image_tag "spinner-bean.gif" %>
     </div>
+    <div></div>
+    
     <%= render partial: "home/navbar" %>
     <div id="pages-container">
-      <%= render "home/flash" %>
-
-      <%= yield %>
+        <%= render "home/flash" %>
+        <%= yield %>
     </div>
     <%# Modal for creating stock: Broker buying new stock from market page %>
 
@@ -38,7 +42,14 @@
     <div class="modal fade" id="modal-delete-stock" tabindex="-1" aria-labelledby="exampleModalLabel1" aria-hidden="true">
         <%# render partial: "market/modal_delete_stock" %>
     </div>
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+      <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.7.0/feather.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+      
   </body>
-  <%= javascript_pack_tag 'dailychartsrun.js' , 'data-turbolinks-track': 'reload' %>
+  <%= javascript_pack_tag 'dailychartsrun.js' , 'data-turbolinks-track': 'reload'  %>
+  <%= javascript_pack_tag 'scripts.js' , 'data-turbolinks-track': 'reload'  %>
 </html>
-

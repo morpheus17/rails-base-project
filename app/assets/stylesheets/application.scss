@@ -1,5 +1,6 @@
 @import "market";
 @import "stocks";
+@import "home";
 
 body {
     min-height: 100vh;
@@ -8,6 +9,12 @@ body {
 
 // Alert
 #pages-container{
+    section{
+        min-height: 100vh;
+    }
+    .sign-container{
+        min-height: 100vh;
+    }
     .alert{
         position:absolute;
         top:0;
