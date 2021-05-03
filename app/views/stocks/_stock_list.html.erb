@@ -1,24 +1,71 @@
 
-<table class="table caption-top">
-  <%# <caption>List of users</caption> %>
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Company</th>
-      <th scope="col">Quantity</th>
-      <th scope="col">Total Amount</th>
-      <th scope="col">Actions</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @stocks.each_with_index do |stock, index| %>
-      <tr>
-        <th scope="row text-muted"><%= index + 1 %></th>
-        <td><%= stock.name %></td>
-        <td><%= stock.quantity %></td>
-        <td><%= stock.amount %></td>
-        <td> Buy | History </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+
+<div class="portfolio-list">
+    <div class="row mb-5">
+      <div class="col-md-4 p-0">
+        <div class="card border-0">
+          <div class="card-body d-flex flex-column justify-content-center">
+            <h1 class="text-center m-0"><%= @stocks_count %></h1>
+            <p class="text-center m-0 text-muted "># of Unique Stocks</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 p-0">
+        <div class="card border-0">
+          <div class="card-body d-flex flex-column justify-content-center">
+            <h1 class="text-center m-0"><%= @stocks_units %></h1>
+            <p class="text-center m-0 text-muted">Total Units</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 p-0">
+        <div class="card border-0">
+          <div class="card-body d-flex flex-column justify-content-center">
+            <h1 class="text-center m-0"><span>&#36;</span><%= number_with_precision(@stocks_net_total_amount , :precision => 2) %></h1>
+            <p class="text-center m-0 text-muted">Net Total Amount</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  <div class="mb-3">
+    <h2 class="text-center">Details</h2>
+  </div>
+  <% @stocks.each_with_index do |stock, index| %>
+    <div class="card mb-4 border-info-1 <%= (index+1).odd? ? 'bg-light' : ''%>">
+      <div class="card-body">
+        <div class="row portfolio-values">
+          <div class="col p-0 d-flex justify-content-center">
+           
+              <h2 class="text-center m-0 align-self-center"><%= stock.name %></h2>
+           
+          </div>
+          <div class="col p-0 d-flex justify-content-center">
+            <h2 class="text-center m-0 align-self-center"><%= stock.quantity %></h2>
+
+          </div>
+          <div class="col p-0 d-flex justify-content-center">
+            <p class="text-center fw-bold m-0 align-self-center"><span>&#36;</span><%= number_with_precision(stock.amount, :precision => 2)%></p>
+            
+          </div>
+        </div>
+        <div class="row">
+          <div class="col p-0">
+              <%# <p class="text-center text-gray m-0">Company</p> %>
+              <h5 class="text-center m-0"><%= stock.name %></h5>
+          </div>
+          <div class="col p-0">
+            <% if stock.quantity > 1 %>
+              <p class="text-center text-gray m-0">Units</p>
+            <% else %>
+              <p class="text-center text-gray m-0">Unit</p>
+            <% end %>
+          </div>
+          <div class="col p-0">
+            <p class="text-center text-gray m-0">Amount</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

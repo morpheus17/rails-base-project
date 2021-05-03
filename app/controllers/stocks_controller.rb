@@ -10,6 +10,9 @@ class StocksController < ApplicationController
     else
       @stocks = current_user.stocks.all
     end
+    @stocks_count = @stocks.count
+    @stocks_units = @stocks.sum(:quantity)
+    @stocks_net_total_amount = @stocks.sum(:amount)
   end
 
   # DELETE /stocks/1 or /stocks/1.json

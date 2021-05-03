@@ -1,28 +1,55 @@
 
-<table class="table caption-top">
-  <%# <caption>List of users</caption> %>
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Company</th>
-      <th scope="col">Quantity</th>
-      <th scope="col">Price/Unit</th>
-      <th scope="col">Total Amount</th>
-      <th scope="col">Seller</th>
-      <th scope="col">Buyer</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @transactions.each_with_index do |transaction, index| %>
-      <tr>
-        <th scope="row text-muted"><%= index + 1 %></th>
-        <td><%= transaction.stock_id %></td>
-        <td><%= transaction.quantity %></td>
-        <td><%= transaction.price %></td>
-        <td><%= transaction.total_amount %></td>
-        <td><%= transaction.seller_id %></td>
-        <td><%= transaction.buyer_id %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<div class="portfolio-list">
+
+  <div class="card border-0">
+    <div class="card-body">
+      <div class="row mb-4">
+        <div class="col p-0">
+          <h5 class="text-center m-0">Company</h5>
+        </div>
+        <div class="col p-0">
+          <h5 class="text-center m-0">Amount Details</h5>
+        </div>
+        <div class="col p-0">
+          <h5 class="text-center m-0">Parties</h5>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <% @transactions.each_with_index do |transaction, index| %>
+    <div class="card mb-4 border-info-1 <%= (index+1).odd? ? 'bg-light' : ''%>">
+      <div class="card-body">
+        <div class="row portfolio-values">
+
+
+          <div class="col p-0 d-flex justify-content-center">
+            <h2 class="text-center m-0 align-self-center"><%= transaction.stock.name %></h2>
+          </div>
+
+          <div class="col p-0 d-flex justify-content-center">
+            <h5 class="text-center fw-bold m-0 align-self-center"><span>&#36;</span><%= number_with_precision(transaction.total_amount, :precision => 2)%></h5>
+          </div>
+
+          <div class="col p-0 d-flex flex-column justify-content-center">
+            <p class="text-center m-0 align-self-center"><%= transaction.seller_id ? "Bought from:"+transaction.seller.username : ""  %></p>
+            <p class="text-center m-0 align-self-center">Bought by: <%= transaction.buyer.username %></p>
+          </div>
+
+        </div>
+
+        <div class="row">
+          <div class="col p-0">
+            <%# <p class="text-center text-gray m-0">Company</p> %>
+            <p class="text-center m-0 text-muted"><%= transaction.created_at %></p>
+          </div>
+          <div class="col p-0">
+            <p class="text-center m-0 text-muted"><%= transaction.quantity %> unit(s) x <span>&#36;</span><%= number_with_precision(transaction.price, :precision => 2)%></p>
+          </div>
+          <div class="col p-0">
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

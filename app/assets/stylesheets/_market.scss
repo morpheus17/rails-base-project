@@ -3,14 +3,36 @@
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
 .market-container {
+  // height: 400
+
   padding-top: 10vh;
   padding-bottom: 5vh;
+  background-position: center;
+  background-image: url("https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1950&q=80");
+
+  .form-control:focus {
+    border-color: #33AE45;
+    box-shadow: inset 0 1px 1px #33AE45, 0 0 8px #33AE45;
+  }
 }
+
+// .market-title{
+//   max-width: 800px;
+// }
+
+// .search-bar-group{
+//   max-width: 800px;
+// }
 
 .company-logo-searched{
   width:150px;
   height:auto;
 }
+
+.card-header-watchlist{
+  height: 75px;
+}
+
 .chart-fill {
     height: 70px;
   }

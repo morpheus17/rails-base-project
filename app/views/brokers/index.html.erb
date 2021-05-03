@@ -1,9 +1,9 @@
 <div class="container">
-  <div class="border-bottom">
+  <div class="mb-3">
     <h1 class="text-center pt-5">Brokers</h1>
   </div>
   <div id ="stock-searched" class="d-flex justify-content-center row">
-    <% if @brokers %>
+    <% if @brokers.length > 0 %>
       <%= render partial: "brokers/broker_list" %>
     <% else %>
       <p class="text-muted text-center pt-5">No brokers active in the market.</p>

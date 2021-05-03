@@ -13,6 +13,7 @@ class MarketController < ApplicationController
       @client = IEX::Api::Client.new()
       @market_quote = @client.quote(params[:stock_name])
       @seller_id = params[:seller_id] ? params[:seller_id] : nil
+      @seller_name = params[:seller_name] ? params[:seller_name] : nil
 
       respond_to  do |format|
         format.js
@@ -58,14 +59,14 @@ class MarketController < ApplicationController
       result_exist = current_user.markets.where(name: params[:name]).count
 
       if result_exist > 0
-        redirect_to(market_url, alert: "Stock was already added in Watchlist.") and return 
+        redirect_to(market_url, alert: "Stock was already added in Watch List.") and return 
       else
         # puts current_user.id
         @market = Market.new({name: params[:name], user_id: current_user.id})
 
         respond_to do |format|
             if @market.save
-              redirect_to(market_url, notice: "Stock in Market was successfully added.") and return
+              redirect_to(market_url, notice: "Stock was successfully added in the Watch List.") and return
             else
               redirect_to(market_url, alert: :unprocessable_entity) and return 
             end
@@ -78,7 +79,7 @@ class MarketController < ApplicationController
       @market.destroy
 
       respond_to do |format|
-        format.html { redirect_to market_url, notice: "Stock in Market was successfully deleted." }
+        format.html { redirect_to market_url, notice: "Stock was successfully removed from the Watch List." }
         format.json { head :no_content }
       end
     end

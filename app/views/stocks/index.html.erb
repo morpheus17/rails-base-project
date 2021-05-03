@@ -1,12 +1,12 @@
 <div class="container">
-  <div class="border-bottom">
-    <h1 class="text-center pt-5">My Portfolio</h1>
+  <div class="">
+    <h1 class="text-center my-5 fw-bold">My Portfolio</h1>
   </div>
   <div id ="stock-searched" class="d-flex justify-content-center row">
-    <% if @stocks %>
+    <% if @stocks.length > 0 %>
       <%= render partial: "stocks/stock_list" %>
     <% else %>
-      <p class="text-muted text-center pt-5">Nothing to show. Go to Market and search for stocks.</p>
+      <p class="text-muted text-center my-5">Nothing to show. Go to Market and search for stocks.</p>
     <% end %>
   </div>
 </div>

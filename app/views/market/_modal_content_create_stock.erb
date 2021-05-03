@@ -1,17 +1,37 @@
-<div class="modal-header border-0">
-  <h5 class="modal-title" id="exampleModalLabel">Buy Stocks</h5>
-  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-</div>
+
 <%= form_with scope: :stock, url: market_stocks_path, method: :post, remote: true do | f |%>
   <div class="modal-body">
-    <p class="">
-      <%= @market_quote.symbol %> <br>
-      <%= @market_quote.company_name %><br>
-      $<%= @market_quote.latest_price%><br>
-      <%= @market_quote.change_percent_s%><br>
-      <%= @market_quote.change%><br>
-      seller id :<%= @seller_id %><br>
-    </p>
+    <% cname = @market_quote.company_name.split(/\s|\./)[0]%>
+    <% image_url = "https://logo.clearbit.com/"+cname+".com" %>
+
+    <div class="d-flex justify-content-between mb-3">
+      <h5 class="modal-title" id="exampleModalLabel">Buy Stocks</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    </div>
+    <div class="row d-flex justify-content-between card-header-watchlist mb-3">
+      <div class="col-2">
+          <img src='<%= image_url %>' class="img-fluid border-0 rounded-3" alt="company_logo">
+      </div>
+      <div class="col">
+        <h5 class="card-title"><%= @market_quote.symbol %></h5>
+        <h6 class="card-subtitle mb-2 text-muted"><%= @market_quote.company_name %></h6>
+      </div>
+    </div>
+    <div class="row d-flex justify-content-start mb-3">
+        <div class="col">
+            <h5 class="text-start">$<%= @market_quote.latest_price%></h5>
+        </div>
+        <div class="col">
+            <p class="mb-0 <%= (@market_quote.change).negative?() ? "text-danger" : "text-success"%> text-end">
+                <i class="<%= (@market_quote.change).negative?() ? 'bi bi-caret-down-fill' : 'bi bi-caret-up-fill'%>"></i>
+                <%= @market_quote.change_percent_s %></p>
+            <p class="mb-0 <%= (@market_quote.change).negative?() ? "text-danger" : "text-success"%> text-end">
+                <i class="<%= (@market_quote.change).negative?() ? 'bi bi-caret-down-fill' : 'bi bi-caret-up-fill'%>"></i>
+                <%= @market_quote.change %></p>
+        </div>
+    </div>
+    <p><%= @seller_name? "Broker: " + @seller_name:"" %></p>
+
     <div class="form-group">
       <div class="text-center">
         <label for="quantity_stocks_path" class="mb-3">Quantity: <span id="rangeval">1</span></label>
