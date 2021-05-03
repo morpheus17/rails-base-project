@@ -109,4 +109,25 @@ Rails.application.configure do
   # config.active_record.database_selector = { delay: 2.seconds }
   # config.active_record.database_resolver = ActiveRecord::Middleware::DatabaseSelector::Resolver
   # config.active_record.database_resolver_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
+
+  # ACTION MAILER
+  config.action_mailer.raise_delivery_errors = true
+
+  config.action_mailer.perform_caching = true
+
+  config.action_mailer.default_url_options = { :host => 'stock-app-4-everyone.herokuapp.com' }
+
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.default :charset => "utf-8"
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    user_name:      ENV['MAILER_EMAIL'],
+    password:       ENV['MAILER_PASSWORD'],
+    domain:         'gmail.com',
+    address:       'smtp.gmail.com',
+    port:          '587',
+    authentication: :plain,
+    enable_starttls_auto: true,
+    ssl: false
+  }
 end
