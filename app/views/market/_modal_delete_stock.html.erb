@@ -12,9 +12,11 @@
     <% if @market_delete %>
       <div class="modal-footer border-0">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-        <%= button_to "Delete", delete_stock_from_market_path, method: :delete ,
+        <%= button_to "Remove", delete_stock_from_market_path, method: :delete ,
+          type: "button",
           class: "btn btn-danger",
-          params: { id: @market_delete["id"] } %>
+          params: { id: @market_delete["id"] },
+          data: {disable_with: "Removing..."}%>
       </div>
     <% end %>
   </div>

@@ -1,51 +1,19 @@
 <!--hero header-->
-        <section class="py-7 py-md-0 bg-hero" id="home" style="background-image: linear-gradient(to right, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.1)), url(<%= asset_path "parallex.jpg" %>)">
-            <div class="container">
-                <div class="row vh-md-100">
-                    <div class="col-md-7 my-md-auto text-center text-md-left">
-                        <h1 class="display-2 text-white font-weight-bold">Trade Faster</h1>
-                        <h1 class="display-2 text-white font-weight-bold">Trade Smarter</h1>
-                        <p class="lead text-light my-4">Buy and Sell stocks with minimal fees</p>
-                        <%# <a href="#signup" class="btn btn-primary page-scroll">Get started now</a> %>
-                        <%= link_to "Get started now", new_user_session_path, class: "btn btn-primary page-scroll", role:"button"%>
-                    </div>
-                </div>
+<section class="home py-7 py-md-0 bg-hero" id="home">
+    <div class="call-action-container container d-flex flex-column justify-content-center align-items-center">
+        <div class="row">
+            <div class="col my-md-auto text-center">
+                <h1 class="display-2 text-white font-weight-bold">Trade Faster</h1>
+                <h1 class="display-2 text-white font-weight-bold">Trade Smarter</h1>
+                <p class="lead text-light my-4">Buy and Sell stocks with minimal fees</p>
+                <%# <a href="#signup" class="btn btn-primary page-scroll">Get started now</a> %>
+                <%= link_to "Get started now", new_user_session_path, class: "btn btn-primary page-scroll", role:"button"%>
             </div>
-        </section>
-        
-        <!--footer / contact-->
-        <footer class="py-6 bg-black" id="contact">
-            <div class="container ">
-                <div class="row justify-content-center">
-                    <div class="col-md-4 col-sm-6 text-center">
-                        <h5 class="text-white">About Investify</h5>
-                        <p class="about">Developed by Red Nacario and Joseph Ong</p>
-                        <ul class="list-inline social social-rounded social-sm">
-                            <li class="list-inline-item">
-                                <a href=""><i class="fab fa-facebook"></i></a>
-                            </li>
-                            <li class="list-inline-item">
-                                <a href=""><i class="fab fa-twitter"></i></a>
-                            </li>
-                            <li class="list-inline-item">
-                                <a href=""><i class="fab fa-instagram"></i></a>
-                            </li>
-                        </ul>
-                    </div>
-                    
-                </div>
-                <div class="row mt-5">
-                    <div class="col-12 text-muted text-center small-xl">
-                        <p>&copy; 2021 Investify. All rights reserved.</p>
-                    </div>
-                </div>
-            </div>
-        </footer>
-
-        <!--scroll to top-->
-        <div class="scroll-top">
-            <i class="fa fa-angle-up" aria-hidden="true"></i>
         </div>
+    </div>
+</section>
+
+
 
 
         

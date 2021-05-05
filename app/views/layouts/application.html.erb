@@ -31,8 +31,18 @@
     
     <%= render partial: "home/navbar" %>
     <div id="pages-container">
-        <%= render "home/flash" %>
+      <%= render "home/flash" %>
         <%= yield %>
+    </div>
+
+    <!--footer / contact-->
+    <% if !current_user %>
+      <%= render partial: "home/footer" %>
+    <% end %>
+
+    <!--scroll to top-->
+    <div class="scroll-top">
+        <i class="fa fa-angle-up" aria-hidden="true"></i>
     </div>
     <%# Modal for creating stock: Broker buying new stock from market page %>
 
