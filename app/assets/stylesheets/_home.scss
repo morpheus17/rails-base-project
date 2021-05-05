@@ -3,14 +3,14 @@
 }
 
 section {
-  // background-image: linear-gradient(to right, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.1))
   background-repeat: no-repeat;
   background-size: 100%;
-  background-image: url("parallex.jpg");
-  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.1)), url("parallex.jpg");
-  // background: url("parallex.jpg") no-repeat, linear-gradient(to right, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.1));
+  // background-image: url("parallex.jpg");
+  background-image: url("https://images.unsplash.com/photo-1439434768192-c60615c1b3c8?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80");
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.1)), url("https://images.unsplash.com/photo-1439434768192-c60615c1b3c8?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80");
+  // background-image: linear-gradient(267.91deg, rgba(255, 229, 127, 0.9) 9.35%, rgba(255, 113, 112, 0.1) 96.48%), url("https://images.unsplash.com/photo-1439434768192-c60615c1b3c8?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80");
 }
-
+// background: linear-gradient(269.16deg, #FFE580 -15.83%, #FF7571 -4.97%, #FF7270 15.69%, #EA5DAD 32.43%, #C2A0FD 50.09%, #9867F0 67.47%, #3BF0E4 84.13%, #33CE43 105.13%, #B2F4B6 123.24%);
 .sign-container,
 .call-action-container{
   min-height: 100vh;

@@ -7,9 +7,9 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 # Create role
-Role.new(role_name: "admin").save
-Role.new(role_name: "buyer").save
-Role.new(role_name: "broker").save
+# Role.new(role_name: "admin").save
+# Role.new(role_name: "buyer").save
+# Role.new(role_name: "broker").save
 
 # # # Create user thru devise
 # # # mimic registration
