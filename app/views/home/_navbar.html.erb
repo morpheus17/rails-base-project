@@ -1,4 +1,4 @@
-<div class="bg-transparent border-bottom">
+<div class=" sticky-navigation fixed-top navbar-light bg-white">
     <nav class="navbar navbar-expand-lg navbar-light bg-transparent container">
         <div class="container-fluid">
             <%= link_to "Investify", root_path, class: "navbar-brand"%>
@@ -36,7 +36,7 @@
 
                 <% else %>
                     <li class="nav-item">
-                        <%= link_to "Sign In", new_user_session_path, class: "ms-3 nav-link", role:"button"%>
+                        <%= link_to "Sign In", new_user_session_path, class: "ms-3 btn btn-outline-primary", role:"button"%>
                     </li>
                     <li class="nav-item">
                         <%= link_to "Sign Up", new_user_registration_path, class: "ms-3  btn btn-outline-primary", role:"button"%>

@@ -1,11 +1,11 @@
 <% flash.each do |name, msg| %>
     <% if name == "alert" %>
-        <div class="container-sm alert alert-warning alert-dismissable fade show d-flex justify-content-between " role="alert">
+        <div class="container-sm alert alert-warning alert-dismissable fade show d-flex justify-content-between fixed-top-alert" role="alert">
         <%= msg %>
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
     <% else %>
-        <div class="container-sm alert alert-success alert-dismissable fade show d-flex justify-content-between" role="alert">
+        <div class="container-sm alert alert-success alert-dismissable fade show d-flex justify-content-between fixed-top-alert" role="alert">
         <%= msg %>
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
