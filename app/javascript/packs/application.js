@@ -8,7 +8,6 @@ require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
 require("jquery")
-// require("custom/scripts")
 
 // global.jQuery, global.$ = require("jquery");
 
