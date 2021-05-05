@@ -73,6 +73,14 @@ class MarketController < ApplicationController
         end
       end
     end
+
+    def pre_delete_stock_from_market
+      @market_delete = params[:market_delete]
+      puts @market_delete["name"]
+      respond_to  do |format|
+        format.js
+      end
+    end
     
     def delete_stock_from_market
       @market = Market.find(params[:id])

@@ -27,6 +27,7 @@ Rails.application.routes.draw do
   post 'show_stock_in_modal' => "market#show_stock_in_modal"
   post 'search_stock_in_market' => "market#search_stock_in_market"
   post "add_stock_to_market" => "market#add_stock_to_market"
+  post "pre_delete_stock_from_market" => "market#pre_delete_stock_from_market"
   delete "delete_stock_from_market" => "market#delete_stock_from_market"
   
   # MARKET_STOCKS

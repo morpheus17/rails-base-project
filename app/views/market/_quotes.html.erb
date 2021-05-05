@@ -12,27 +12,31 @@
                     change_percent_s: quote.change_percent_s,
                     change: quote.change
                 } %>
-                <% cname = quote.company_name.split(/\s|\./)[0]%>
+                <% cname = quote.company_name.split(/\s|\./)[0].downcase %>
                 <% image_url = "https://logo.clearbit.com/"+cname+".com" %>
+                <% @market_id = market.id%>
                 <div class="card">
                     <div class="card-body">
-                        <div class="d-flex justify-content-between card-header-watchlist">
-                            <div class="col-3 p-0 ">
-                                <img src='<%= image_url %>' class="img-fluid border-0 rounded-3" alt="company_logo">
+                        <div class="d-flex justify-content-between mb-3">
+                            <div class="col p-0 ">
+                                <img src='<%= image_url %>' class="img border-0 rounded-3 company-logo-pic" alt="company_logo">
                             </div>
-                            <button type="button" class="btn-close text-white-50"  data-bs-toggle="modal" data-bs-target=#modal-delete-stock></button>
-
-                
-
+                            <%# <button type="button" class="btn-close text-white-50"  data-bs-toggle="modal" data-bs-target=#modal-delete-stock></button> %>
+                            
+                            <%= button_to "", pre_delete_stock_from_market_path, method: :post, remote: true,
+                                    class: "btn-close text-white-50",
+                                    "data-bs-toggle" => "modal",
+                                    "data-bs-target" => "#modal-delete-stock",
+                                    params: { market_delete: { id: market.id, name: market.name} } %>
 
                         </div>
                         <h5 class="card-title"><%= quote.symbol %></h5>
                         <h6 class="card-subtitle mb-2 text-muted"><%= quote.company_name %></h6>
                         <div class="row d-flex justify-content-start mb-3">
-                            <div class="col">
+                            <div class="col-md-6">
                                 <h5 class="text-start">$<%= quote.latest_price%></h5>
                             </div>
-                            <div class="col">
+                            <div class="col-md-6">
                                 <p class="mb-0 <%= (quote.change).negative?() ? "text-danger" : "text-success"%> text-end">
                                     <i class="<%= (quote.change).negative?() ? 'bi bi-caret-down-fill' : 'bi bi-caret-up-fill'%>"></i>
                                     <%= quote.change_percent_s %></p>

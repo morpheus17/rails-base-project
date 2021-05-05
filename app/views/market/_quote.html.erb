@@ -23,7 +23,7 @@
         <% @data = @data.join(",")%>
     <% end %>
 
-    <% @cname = @quote.company_name.split(/\s|\./)[0]%>
+    <% @cname = @quote.company_name.split(/\s|\./)[0].downcase  %>
     <% @image_url = "https://logo.clearbit.com/"+@cname+".com" %>
     <% info =  @paidClient.company(@quote.symbol) %>
     <% @description =  info.description %>
@@ -41,7 +41,7 @@
             <div class="card-body">
                 <div class="row d-flex justify-content-start mb-4">
                     <div class="col-3">
-                        <img src='<%= @image_url %>' class="img-fluid border rounded-3 col company-logo-searched" alt="company_logo">
+                        <img src='<%= @image_url %>' class="img-fluid rounded-3 col company-logo-searched" alt="company_logo">
                     </div>
                     <div class="col-5 ps-3">
                         <h3 ><%= @quote.symbol %></h3>
